@@ -1,0 +1,238 @@
+
+@local = http://localhost:3000
+@host  = {{local}}
+
+@accessToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTcwNjIyNTA5NCwiZXhwIjoxNzA2ODI5ODk0fQ.dLTAvNVpxl8LrGM2icm0xH2g3RUME46vQU5owlsZ_ls
+
+
+### APP: Health check
+GET {{host}}/.health-check
+Content-Type: application/json
+
+### AUTH: Register
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "123456"
+}
+
+### AUTH: Login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "123456"
+}
+
+### AUTH: Profile
+GET {{host}}/auth/profile
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+### ARTICLE: Create article
+POST {{host}}/article
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+    "title": "First Step",
+    "description": "In this set of articles, you'll learn the core fundamentals of Nest. To get familiar with the essential building blocks of Nest applications, we'll build a basic CRUD application with features that cover a lot of ground at an introductory level",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 20:00:00"
+}
+
+### ARTICLE: Create article [BATCH]
+POST {{host}}/article/batch
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+[{
+    "title": "First Step",
+    "description": "In this set of articles, you'll learn the core fundamentals of Nest. To get familiar with the essential building blocks of Nest applications, we'll build a basic CRUD application with features that cover a lot of ground at an introductory level",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 20:00:00"
+},
+{
+    "title": "Controllers",
+    "description": "Controllers are responsible for handling incoming requests and returning responses to the client.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 20:10:00"
+},
+{
+    "title": "Providers",
+    "description": "Providers are a fundamental concept in Nest. Many of the basic Nest classes may be treated as a provider – services, repositories, factories, helpers, and so on. The main idea of a provider is that it can be injected as a dependency; this means objects can create various relationships with each other, and the function of \"wiring up\" these objects can largely be delegated to the Nest runtime system.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 20:20:00"
+},
+{
+    "title": "Modules",
+    "description": "A module is a class annotated with a @Module() decorator. The @Module() decorator provides metadata that Nest makes use of to organize the application structure.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 20:30:00"
+},
+{
+    "title": "Middleware",
+    "description": "Middleware is a function which is called before the route handler. Middleware functions have access to the request and response objects, and the next() middleware function in the application’s request-response cycle. The next middleware function is commonly denoted by a variable named next.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 20:40:00"
+},
+{
+    "title": "Exception filters",
+    "description": "Nest comes with a built-in exceptions layer which is responsible for processing all unhandled exceptions across an application. When an exception is not handled by your application code, it is caught by this layer, which then automatically sends an appropriate user-friendly response.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 20:50:00"
+},
+{
+    "title": "Pipes",
+    "description": "A pipe is a class annotated with the @Injectable() decorator, which implements the PipeTransform interface.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 21:00:00"
+},
+{
+    "title": "Guards",
+    "description": "A guard is a class annotated with the @Injectable() decorator, which implements the CanActivate interface.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 21:10:00"
+},
+{
+    "title": "Interceptors",
+    "description": "An interceptor is a class annotated with the @Injectable() decorator and implements the NestInterceptor interface.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 21:20:00"
+},
+{
+    "title": "Custom route decorators",
+    "description": "Nest is built around a language feature called decorators. Decorators are a well-known concept in a lot of commonly used programming languages, but in the JavaScript world, they're still relatively new. In order to better understand how decorators work, we recommend reading this article. Here's a simple definition:",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 21:30:00"
+},
+{
+    "title": "Custom providers",
+    "description": "In earlier chapters, we touched on various aspects of Dependency Injection (DI) and how it is used in Nest. One example of this is the constructor based dependency injection used to inject instances (often service providers) into classes. You won't be surprised to learn that Dependency Injection is built into the Nest core in a fundamental way. So far, we've only explored one main pattern. As your application grows more complex, you may need to take advantage of the full features of the DI system, so let's explore them in more detail.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 21:40:00"
+},
+{
+    "title": "Asynchronous providers",
+    "description": "At times, the application start should be delayed until one or more asynchronous tasks are completed. For example, you may not want to start accepting requests until the connection with the database has been established. You can achieve this using asynchronous providers.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 21:50:00"
+},
+{
+    "title": "Dynamic modules",
+    "description": "The Modules chapter covers the basics of Nest modules, and includes a brief introduction to dynamic modules. This chapter expands on the subject of dynamic modules. Upon completion, you should have a good grasp of what they are and how and when to use them.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 22:00:00"
+},
+{
+    "title": "Injection scopes",
+    "description": "For people coming from different programming language backgrounds, it might be unexpected to learn that in Nest, almost everything is shared across incoming requests. We have a connection pool to the database, singleton services with global state, etc. Remember that Node.js doesn't follow the request/response Multi-Threaded Stateless Model in which every request is processed by a separate thread. Hence, using singleton instances is fully safe for our applications.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 22:10:00"
+},
+{
+    "title": "Circular dependency",
+    "description": "A circular dependency occurs when two classes depend on each other. For example, class A needs class B, and class B also needs class A. Circular dependencies can arise in Nest between modules and between providers.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 22:20:00"
+},
+{
+    "title": "Module reference",
+    "description": "Nest provides the ModuleRef class to navigate the internal list of providers and obtain a reference to any provider using its injection token as a lookup key. The ModuleRef class also provides a way to dynamically instantiate both static and scoped providers.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 22:30:00"
+},
+{
+    "title": "Lazy-loading modules",
+    "description": "By default, modules are eagerly loaded, which means that as soon as the application loads, so do all the modules, whether or not they are immediately necessary. While this is fine for most applications, it may become a bottleneck for apps/workers running in the serverless environment, where the startup latency (\"cold start\") is crucial.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 22:40:00"
+},
+{
+    "title": "Execution context",
+    "description": "Nest provides several utility classes that help make it easy to write applications that function across multiple application contexts (e.g., Nest HTTP server-based, microservices and WebSockets application contexts).",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 22:50:00"
+},
+{
+    "title": "Lifecycle Events",
+    "description": "A Nest application, as well as every application element, has a lifecycle managed by Nest. Nest provides lifecycle hooks that give visibility into key lifecycle events, and the ability to act (run registered code on your modules, providers or controllers) when they occur.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 23:00:00"
+},
+{
+    "title": "Platform agnosticism",
+    "description": "Nest is a platform-agnostic framework. This means you can develop reusable logical parts that can be used across different types of applications. For example, most components can be re-used without change across different underlying HTTP server frameworks (e.g., Express and Fastify), and even across different types of applications (e.g., HTTP server frameworks, Microservices with different transport layers, and Web Sockets).",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 23:10:00"
+},
+{
+    "title": "Testing",
+    "description": "Automated testing is considered an essential part of any serious software development effort. Automation makes it easy to repeat individual tests or test suites quickly and easily during development. This helps ensure that releases meet quality and performance goals. Automation helps increase coverage and provides a faster feedback loop to developers. Automation both increases the productivity of individual developers and ensures that tests are run at critical development lifecycle junctures, such as source code control check-in, feature integration, and version release.",
+    "topic": "Nest.js",
+    "publishedAt": "2024-01-25 23:20:00"
+},
+{
+    "title": "What Is Bun? An All-in-One Runtime Taking on Node.js",
+    "description": "JavaScript is one of the world’s most popular and widely adopted programming languages. It ͏powers web applications, mobile apps, desktop software, and even embedded devices. Despite its widespread use, it’s not without its challenges. Like all technologies, JavaScript grapples with issues related to performance, compatibility, security, and complexity.",
+    "topic": "Node.js",
+    "publishedAt": "2024-01-25 23:30:00"
+},
+{
+    "title": "Create and Deploy a Node.js App in 5 mins With Express",
+    "description": "Express, the world’s most used Node.js framework, empowers developers to create backend web servers with JavaScript. This framework provides most of what backend developers need out of the box, simplifying routing and responding to web requests.",
+    "topic": "Node.js",
+    "publishedAt": "2024-01-25 23:40:00"
+},
+{
+    "title": "Setting Up Database Maintenance Plans for PostgreSQL on Node.js",
+    "description": "As application development evolves, databases stand as the core of most applications, storing and managing data crucial to digital businesses. As this data grows and becomes more complex, ensuring your database’s efficiency is vital to meet your app’s needs.",
+    "topic": "Node.js",
+    "publishedAt": "2024-01-25 23:50:00"
+},
+{
+    "title": "Solved: “Cannot Use Import Statement Outside a Module” Error",
+    "description": "The error message “Cannot use import statement outside a module” occurs when the import keyword is encountered in an improperly configured JavaScript or TypeScript module.",
+    "topic": "Node.js",
+    "publishedAt": "2024-01-26 00:00:00"
+},
+{
+    "title": "13 Node.js Libraries to Power Your Projects",
+    "description": "Node.js has become the go-to runtime environment for many developers working on web applications. Built to run code written in JavaScript, one of the most popular programming languages in the world, Node.js makes the building of server-side applications accessible to a large community of developers.",
+    "topic": "Node.js",
+    "publishedAt": "2024-01-26 00:10:00"
+},
+{
+    "title": "How to Debug Node.js Code Using Multiple Tools",
+    "description": "Node.js is a JavaScript runtime based on the same V8 engine used in Google’s Chrome browser. It is often used to build cross-platform server-side and terminal applications. Node.js has become increasingly popular over the past decade because it’s easy to install, practical to use, fast, and allows client-side web developers to leverage their skills elsewhere.",
+    "topic": "Node.js",
+    "publishedAt": "2024-01-25 23:50:00"
+}
+]
+
+### ARTICLE: list
+GET {{host}}/article?topic=Nest.js&userId=1
+Content-Type: application/json
+
+### ARTICLE: Get article
+GET {{host}}/article/4
+Content-Type: application/json
+
+### ARTICLE: Update article
+PATCH {{host}}/article/9
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+    "title": "..."
+}
+
+### ARTICLE: Delete article
+DELETE {{host}}/article/11
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+
